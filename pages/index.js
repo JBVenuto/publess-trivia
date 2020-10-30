@@ -41,6 +41,7 @@ export default function Home() {
           <Questions
             category={questions[currentQuestion].category.title}
             question={questions[currentQuestion].question}
+            answer={questions[currentQuestion].answer}
             buttonClick={e => nextQuestion(currentQuestion + 1)}
             currentQuestion={currentQuestion}
             lastQuestion={questions.length - 1}
