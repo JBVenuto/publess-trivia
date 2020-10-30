@@ -10,6 +10,11 @@ export default function Home() {
   const [currentQuestion, nextQuestion] = useState(0);
   const [showQuestions, toggleQuestions] = useState(false);
 
+  const reset = () => {
+    toggleQuestions(false);
+    setNumQuestions(0);
+  }
+
   return (
     <div className={styles.container}>
       <Head>
