@@ -30,7 +30,6 @@ const Questions = props => {
 
 const mapStateToProps = (state) => {
     return {
-      numQuestions: state.numQuestions,
       questions: state.questions,
       currentQuestion: state.currentQuestion,
       showQuestions: state.showQuestions
