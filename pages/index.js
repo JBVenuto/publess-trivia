@@ -3,7 +3,6 @@ import styles from '../styles/Home.module.css'
 import NumInput from '../components/NumInput';
 import Questions from '../components/Questions';
 import getQuestions from './api/getQuestions';
-
 import { connect } from 'react-redux';
 
 const Home = props => {
@@ -30,27 +29,30 @@ const Home = props => {
 
       <main>
         {!props.showQuestions ?
-          <NumInput
-            value={props.numQuestions}
-            inputChange={e => setNumQuestions(e.target.value)}
-            buttonClick={e => {
-              toggleQuestions(true);
-              apiCall();
-            }}
-          /> :
-          <Questions
-            category={props.questions[currentQuestion].category.title}
-            question={props.questions[currentQuestion].question}
-            answer={props.questions[currentQuestion].answer}
-            buttonClick={e => nextQuestion(currentQuestion + 1)}
-            currentQuestion={props.currentQuestion}
-            lastQuestion={props.questions.length - 1}
-          />
+          <NumInput />
+          // <NumInput
+          //   value={props.numQuestions}
+          //   inputChange={e => setNumQuestions(e.target.value)}
+          //   buttonClick={e => {
+          //     toggleQuestions(true);
+          //     apiCall();
+          //   }}
+          // />
+          :
+          <Questions />
+          // <Questions
+          //   category={props.questions[currentQuestion].category.title}
+          //   question={props.questions[currentQuestion].question}
+          //   answer={props.questions[currentQuestion].answer}
+          //   buttonClick={e => nextQuestion(currentQuestion + 1)}
+          //   currentQuestion={props.currentQuestion}
+          //   lastQuestion={props.questions.length - 1}
+          // />
         }
       </main>
     </div>
   )
-      // }
+  // }
 }
 
 const mapStateToProps = (state) => {

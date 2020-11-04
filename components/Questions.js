@@ -1,16 +1,18 @@
 import { useState } from 'react';
+import { connect } from 'react-redux';
 
 const Questions = props => {
     const [viewAnswer, toggleAnswer] = useState(false)
     const nextQ = () => {
-        props.buttonClick();
+        // props.buttonClick();
         toggleAnswer(false);
     }
+    const question = props.questions[props.currentQuestion];
 
     return (
         <section>
-            <h3>{props.category}</h3>
-            <h2>{props.question}</h2>
+            <h3>{question.category.title}</h3>
+            <h2>{question.question}</h2>
             {!viewAnswer ?
                 <button onClick={e => toggleAnswer(true)}>Answer</button> :
                 <div>
@@ -26,4 +28,13 @@ const Questions = props => {
     )
 }
 
-export default Questions;
+const mapStateToProps = (state) => {
+    return {
+      numQuestions: state.numQuestions,
+      questions: state.questions,
+      currentQuestion: state.currentQuestion,
+      showQuestions: state.showQuestions
+    }
+  }
+
+export default connect(mapStateToProps)(Questions);
