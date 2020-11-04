@@ -1,26 +1,26 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import { useState } from 'react';
 import NumInput from '../components/NumInput';
 import Questions from '../components/Questions';
 import getQuestions from './api/getQuestions';
 
-export default function Home() {
-  const [numQuestions, setNumQuestions] = useState(0);
-  const [questions, setQuestions] = useState([{category: {title: ''}, question: 'LOADING...', answer: ''}]);
-  const [currentQuestion, nextQuestion] = useState(0);
-  const [showQuestions, toggleQuestions] = useState(false);
+import { connect } from 'react-redux';
 
-  async function apiCall() {
-    const questions = await getQuestions(numQuestions);
-    setQuestions(questions);
-  }
+const Home = props => {
+  // const [numQuestions, setNumQuestions] = useState(0);
+  // const [questions, setQuestions] = useState([{category: {title: ''}, question: 'LOADING...', answer: ''}]);
+  // const [currentQuestion, nextQuestion] = useState(0);
+  // const [showQuestions, toggleQuestions] = useState(false);
 
-  const reset = () => {
-    toggleQuestions(false);
-    setNumQuestions(0);
-  }
+  // async function apiCall() {
+  //   const questions = await getQuestions(numQuestions);
+  //   setQuestions(questions);
+  // }
 
+  // const reset = () => {
+  //   toggleQuestions(false);
+  //   setNumQuestions(0);
+  // }
   return (
     <div className={styles.container}>
       <Head>
@@ -29,9 +29,9 @@ export default function Home() {
       </Head>
 
       <main>
-        {!showQuestions ?
+        {!props.showQuestions ?
           <NumInput
-            value={numQuestions}
+            value={props.numQuestions}
             inputChange={e => setNumQuestions(e.target.value)}
             buttonClick={e => {
               toggleQuestions(true);
@@ -39,15 +39,27 @@ export default function Home() {
             }}
           /> :
           <Questions
-            category={questions[currentQuestion].category.title}
-            question={questions[currentQuestion].question}
-            answer={questions[currentQuestion].answer}
+            category={props.questions[currentQuestion].category.title}
+            question={props.questions[currentQuestion].question}
+            answer={props.questions[currentQuestion].answer}
             buttonClick={e => nextQuestion(currentQuestion + 1)}
-            currentQuestion={currentQuestion}
-            lastQuestion={questions.length - 1}
+            currentQuestion={props.currentQuestion}
+            lastQuestion={props.questions.length - 1}
           />
         }
       </main>
     </div>
   )
+      // }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    numQuestions: state.numQuestions,
+    questions: state.questions,
+    currentQuestion: state.currentQuestion,
+    showQuestions: state.showQuestions
+  }
+}
+
+export default connect(mapStateToProps)(Home)
