@@ -2,8 +2,7 @@ const initState = {
     questions: [{category: {title: ''}, question: 'LOADING...', answer: ''}],
     numQuestions: 0,
     currentQuestion: 0,
-    showQuestions: false,
-    viewAnswer: false
+    showQuestions: false
 }
 
 export const rootReducer = (state = initState, action) => {
@@ -18,21 +17,19 @@ export const rootReducer = (state = initState, action) => {
                 ...state,
                 showQuestions: !state.showQuestions
             }
-        case 'VIEW_ANSWER':
-            return {
-                ...state,
-                viewAnswer: true
-            }
         case 'NEXT_QUESTION':
             return {
                 ...state,
                 currentQuestion: state.currentQuestion + 1,
-                viewAnswer: false
             }
         case 'GET_QUESTIONS':
             return {
                 ...state,
                 questions: action.questions
+            }
+        case 'RESET':
+            return {
+                ...state
             }
         default:
             return state

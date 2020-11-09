@@ -11,12 +11,6 @@ export const viewQuestions = () => {
     }
 }
 
-export const viewAnswer = () => {
-    return {
-        type: 'VIEW_ANSWER'
-    }
-}
-
 export const nextQuestion = () => {
     return {
         type: 'NEXT_QUESTION'
@@ -24,9 +18,14 @@ export const nextQuestion = () => {
 }
 
 export const getQuestions = (questions) => {
-
     return {
         type: 'GET_QUESTIONS',
         questions
+    }
+}
+
+export const reset = () => {
+    return {
+        type: 'RESET'
     }
 }

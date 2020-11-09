@@ -7,7 +7,6 @@ const NumInput = props => {
         e.preventDefault();
         props.viewQuestions();
         const questions = await questionsApi(props.numQuestions);
-        console.log(questions);
         props.getQuestions(questions);
     }
 

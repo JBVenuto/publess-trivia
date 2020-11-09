@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
+import { nextQuestion } from '../actions/actions';
 
 const Questions = props => {
     const [viewAnswer, toggleAnswer] = useState(false)
     const nextQ = () => {
-        // props.buttonClick();
+        props.nextQuestion();
         toggleAnswer(false);
+    }
+    const finish = () => {
+        
     }
     const question = props.questions[props.currentQuestion];
 
@@ -16,9 +20,9 @@ const Questions = props => {
             {!viewAnswer ?
                 <button onClick={e => toggleAnswer(true)}>Answer</button> :
                 <div>
-                    <h3>{props.answer}</h3>
-                    {props.currentQuestion === props.lastQuestion ?
-                        <button>Finish</button> :
+                    <h3>{question.answer}</h3>
+                    {props.currentQuestion === props.questions.length - 1 ?
+                        <button onClick={finish}>Finish</button> :
                         <button onClick={nextQ}>Next Question</button>
                     }
                 </div>
@@ -30,10 +34,16 @@ const Questions = props => {
 
 const mapStateToProps = (state) => {
     return {
-      questions: state.questions,
-      currentQuestion: state.currentQuestion,
-      showQuestions: state.showQuestions
+        questions: state.questions,
+        currentQuestion: state.currentQuestion,
+        showQuestions: state.showQuestions
     }
-  }
+}
 
-export default connect(mapStateToProps)(Questions);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        nextQuestion: () => dispatch(nextQuestion()),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Questions);
