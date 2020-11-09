@@ -1,15 +1,12 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import { nextQuestion } from '../actions/actions';
+import { nextQuestion, reset } from '../actions/actions';
 
 const Questions = props => {
     const [viewAnswer, toggleAnswer] = useState(false)
     const nextQ = () => {
         props.nextQuestion();
         toggleAnswer(false);
-    }
-    const finish = () => {
-        
     }
     const question = props.questions[props.currentQuestion];
 
@@ -22,7 +19,7 @@ const Questions = props => {
                 <div>
                     <h3>{question.answer}</h3>
                     {props.currentQuestion === props.questions.length - 1 ?
-                        <button onClick={finish}>Finish</button> :
+                        <button onClick={e => props.reset()}>Finish</button> :
                         <button onClick={nextQ}>Next Question</button>
                     }
                 </div>
@@ -43,6 +40,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         nextQuestion: () => dispatch(nextQuestion()),
+        reset: () => dispatch(reset())
     }
 }
 

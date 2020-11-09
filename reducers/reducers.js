@@ -29,7 +29,7 @@ export const rootReducer = (state = initState, action) => {
             }
         case 'RESET':
             return {
-                ...state
+                ...initState
             }
         default:
             return state
