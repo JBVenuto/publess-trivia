@@ -13,6 +13,11 @@ export const rootReducer = (state = initState, action) => {
                 ...state,
                 numQuestions: action.numQuestions
             }
+        case 'VIEW_QUESTIONS':
+            return {
+                ...state,
+                showQuestions: !state.showQuestions
+            }
         case 'VIEW_ANSWER':
             return {
                 ...state,
@@ -27,8 +32,7 @@ export const rootReducer = (state = initState, action) => {
         case 'GET_QUESTIONS':
             return {
                 ...state,
-                questions: action.questions,
-                numQuestions: action.numQuestions
+                questions: action.questions
             }
         default:
             return state

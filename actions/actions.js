@@ -5,6 +5,12 @@ export const updateNumQuestions = (numQuestions) => {
     }
 }
 
+export const viewQuestions = () => {
+    return {
+        type: 'VIEW_QUESTIONS'
+    }
+}
+
 export const viewAnswer = () => {
     return {
         type: 'VIEW_ANSWER'
@@ -17,8 +23,7 @@ export const nextQuestion = () => {
     }
 }
 
-export async function getQuestions(numQuestions) {
-    let questions = await getQuestions(numQuestions);
+export const getQuestions = (questions) => {
 
     return {
         type: 'GET_QUESTIONS',

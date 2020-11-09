@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import NumInput from '../components/NumInput';
 import Questions from '../components/Questions';
-import getQuestions from './api/getQuestions';
+// import getQuestions from './api/questionsApi';
 import { connect } from 'react-redux';
 
 const Home = props => {
