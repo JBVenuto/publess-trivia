@@ -12,7 +12,7 @@ const Questions = props => {
 
     return (
         <section>
-            <h3>{question.category.title}</h3>
+            <i><h3>{question.category.title}</h3></i>
             <h2>{question.question}</h2>
             {!viewAnswer ?
                 <button onClick={e => toggleAnswer(true)}>Answer</button> :
