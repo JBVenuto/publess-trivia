@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { updateNumQuestions, viewQuestions, getQuestions } from '../actions/actions';
 import questionsApi from '../pages/api/questionsApi';
+import styles from '../styles/numINput.module.scss';
 
 const NumInput = props => {
     async function handleClick(e) {
@@ -15,11 +16,11 @@ const NumInput = props => {
     }
 
     return (
-        <section>
+        <section className={styles.numInput}>
             <h3>How many questions would you like to answer?</h3>
             <form className="row">
-                <input className="col s2" value={props.numQuestions} onChange={e => props.updateNumQuestions(e.target.value)} type='text' ></input>
-                <button className="col s2 offset-s2 btn indigo darken-4" onClick={e => handleClick(e)}>Start</button>
+                <input className="col s2 offset-s3" value={props.numQuestions} onChange={e => props.updateNumQuestions(e.target.value)} type='text' ></input>
+                <button className="col s3 offset-s1 btn indigo darken-4" onClick={e => handleClick(e)}>Start</button>
             </form>
         </section>
     )
