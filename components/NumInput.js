@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { updateNumQuestions, viewQuestions, getQuestions } from '../actions/actions';
 import questionsApi from '../pages/api/questionsApi';
-import styles from '../styles/numINput.module.scss';
+import styles from '../styles/numInput.module.scss';
 
 const NumInput = props => {
     async function handleClick(e) {
