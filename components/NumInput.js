@@ -19,7 +19,7 @@ const NumInput = props => {
             <h3>How many questions would you like to answer?</h3>
             <form className="row">
                 <input className="col s2" value={props.numQuestions} onChange={e => props.updateNumQuestions(e.target.value)} type='text' ></input>
-                <button className="indigo darken-4 col s2 offset-s2 waves-effect waves-yellow btn" onClick={e => handleClick(e)}>Start</button>
+                <button className="col s2 offset-s2 btn indigo darken-4" onClick={e => handleClick(e)}>Start</button>
             </form>
         </section>
     )
