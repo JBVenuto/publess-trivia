@@ -4,9 +4,14 @@ import questionsApi from '../pages/api/questionsApi';
 
 const NumInput = props => {
     async function handleClick(e) {
+        if(props.numQuestions > 0) {
         props.viewQuestions();
         const questions = await questionsApi(props.numQuestions);
         props.getQuestions(questions);
+        }
+        else {
+            alert("Number of questions must be greater than zero")
+        }
     }
 
     return (
