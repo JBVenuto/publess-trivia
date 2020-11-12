@@ -10,25 +10,21 @@ const Questions = props => {
         toggleAnswer(false);
     }
     const question = props.questions[props.currentQuestion];
-    const vertCenter = {
-        "align-self": "center"
-    }
 
     return (
         <section className={styles.questions}>
-            <i><h3>{question.category.title}</h3></i>
-            <h2>{question.question}</h2>
+            <i><h4>{question.category.title}</h4></i>
+            <h4>{question.question}</h4>
             {!viewAnswer ?
                 <button className="col s2 offset-s2 btn indigo darken-4" onClick={e => toggleAnswer(true)}>Answer</button> :
                 <div className="row">
-                    <h3 className="col s10">{question.answer}</h3>
+                    <h5 className="col s12 m10" style={{ padding: 0 }}>{question.answer}</h5>
                     {props.currentQuestion === props.questions.length - 1 ?
-                        <button className="col s2 btn indigo darken-4" onClick={e => props.reset()}>Finish</button> :
-                        <button className="col s2 btn indigo darken-4" onClick={nextQ}>Next Question</button>
+                        <button className="col s3 m2 btn indigo darken-4" onClick={e => props.reset()}>Finish</button> :
+                        <button className="col s3 m2 btn indigo darken-4" onClick={nextQ}>Next Question</button>
                     }
                 </div>
             }
-
         </section>
     )
 }
