@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { updateNumQuestions, viewQuestions, getQuestions } from '../actions/actions';
 import questionsApi from '../pages/api/questionsApi';
 import styles from '../styles/numInput.module.scss';
+import AddTeams from './AddTeams';
 
 const NumInput = props => {
     async function handleClick(e) {
@@ -22,6 +23,7 @@ const NumInput = props => {
                 <input className="col s2 offset-s3" value={props.numQuestions} onChange={e => props.updateNumQuestions(e.target.value)} type='text' ></input>
                 <button className="col s3 offset-s1 btn indigo darken-4" onClick={e => handleClick(e)}>Start</button>
             </form>
+            <AddTeams />
         </section>
     )
 }

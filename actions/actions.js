@@ -29,3 +29,18 @@ export const reset = () => {
         type: 'RESET'
     }
 }
+
+export const addTeam = (team) => {
+    return {
+        type: 'ADD_TEAM',
+        team
+    }
+}
+
+export const changeScore = (team, points) => {
+    return {
+        type: 'CHANGE_SCORE',
+        team,
+        points
+    }
+}
