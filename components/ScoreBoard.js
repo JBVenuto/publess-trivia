@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
-import { addTeam } from '../actions/actions';
+import { changeScore } from '../actions/actions';
 import { useState } from 'react';
 
-const AddTeams = (props) => {
+const ScoreBoard = (props) => {
     const [teamName, setTeamName] = useState('');
 
     const handleClick = e => {
@@ -33,8 +33,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addTeam: (team) => dispatch(addTeam(team))
+        changeScore: (team) => dispatch(changeScore(team))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddTeams);
+export default connect(mapStateToProps, mapDispatchToProps)(ScoreBoard);
