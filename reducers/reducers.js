@@ -55,7 +55,7 @@ export const rootReducer = (state = initState, action) => {
 
         case 'CHANGE_SCORE':
             let newScores = state.scores;
-            newScores[action.team] = newScores[action.team] + action.points;
+            newScores[action.team] = newScores[action.team] + parseInt(action.points);
 
             return {
                 ...state,

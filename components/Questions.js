@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { nextQuestion, reset } from '../actions/actions';
 import styles from '../styles/questions.module.scss';
 import removeTags from '../lib/removeTags';
+import ScoreBoard from './ScoreBoard';
 
 const Questions = props => {
     const [viewAnswer, toggleAnswer] = useState(false)
@@ -29,6 +30,7 @@ const Questions = props => {
                     }
                 </div>
             }
+            <ScoreBoard />
         </section>
     )
 }

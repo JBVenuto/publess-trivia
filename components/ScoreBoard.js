@@ -3,23 +3,26 @@ import { changeScore } from '../actions/actions';
 import { useState } from 'react';
 
 const ScoreBoard = (props) => {
-    const [teamName, setTeamName] = useState('');
-
-    const handleClick = e => {
-        e.preventDefault()
-        props.addTeam(teamName)
-        setTeamName('')
+    const handleClick = (type, team) => {
+        alert(`${type}${points} to ${team}`);
+        let points = props.questions[props.currentQuestion].value
+        if (type === '-') {
+            points = type + points;
+        }
+        props.changeScore(team, points)
     }
 
     return (
         <div>
-            <br></br>
-            <form className="row">
-                <input type="text" placeholder="Team Name" value={teamName} onChange={e => setTeamName(e.target.value)} className="col s6"></input>
-                <button onClick={e => handleClick(e)} className="col s1 offset-s1 btn indigo darken-4">Add</button>
-            </form>
+            <h3>Score</h3>
             <ul>
-                {Object.keys(props.scores).map((key, index) => <li key={index}>{key}</li>)}
+                {Object.keys(props.scores).map((key, index) => (
+                    <li key={index}>
+                        <span onClick={e => handleClick('-', key)}>-</span>
+                        {key}: {props.scores[key]}
+                        <span onClick={e => handleClick('+', key)}>+</span>
+                    </li>
+                ))}
             </ul>
         </div>
     )
@@ -27,13 +30,15 @@ const ScoreBoard = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        scores: state.scores
+        scores: state.scores,
+        questions: state.questions,
+        currentQuestion: state.currentQuestion
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        changeScore: (team) => dispatch(changeScore(team))
+        changeScore: (team) => dispatch(changeScore(team, points))
     }
 }
 
