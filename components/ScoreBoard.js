@@ -2,9 +2,6 @@ import { connect } from 'react-redux';
 import { changeScore } from '../actions/actions';
 
 const ScoreBoard = (props) => {
-    console.log('score board 1', props.scores)
-    console.log('questions', props.questions)
-
     const handleClick = (type, team) => {
         let points = props.questions[props.currentQuestion].value
         if (type === '-') {
