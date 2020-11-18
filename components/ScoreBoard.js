@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 import { changeScore } from '../actions/actions';
-import { useState } from 'react';
 
 const ScoreBoard = (props) => {
+    console.log('score board 1', props.scores)
+    console.log('questions', props.questions)
+
     const handleClick = (type, team) => {
-        alert(`${type}${points} to ${team}`);
         let points = props.questions[props.currentQuestion].value
         if (type === '-') {
             points = type + points;
@@ -18,9 +19,11 @@ const ScoreBoard = (props) => {
             <ul>
                 {Object.keys(props.scores).map((key, index) => (
                     <li key={index}>
-                        <span onClick={e => handleClick('-', key)}>-</span>
-                        {key}: {props.scores[key]}
-                        <span onClick={e => handleClick('+', key)}>+</span>
+                        <h6>
+                            <span onClick={e => handleClick('-', key)}>-</span>
+                            {key}: {props.scores[key]}
+                            <span onClick={e => handleClick('+', key)}>+</span>
+                        </h6>
                     </li>
                 ))}
             </ul>
@@ -38,7 +41,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        changeScore: (team) => dispatch(changeScore(team, points))
+        changeScore: (team, points) => dispatch(changeScore(team, points))
     }
 }
 

@@ -59,7 +59,7 @@ export const rootReducer = (state = initState, action) => {
 
             return {
                 ...state,
-                scores: newTeams
+                scores: newScores
             }
 
         default:

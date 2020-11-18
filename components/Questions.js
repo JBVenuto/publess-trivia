@@ -15,6 +15,12 @@ const Questions = props => {
     const category = removeTags(currentQuestion.category.title);
     const question = removeTags(currentQuestion.question);
     const answer = removeTags(currentQuestion.answer);
+    // const value = currentQuestion.value;
+
+    // if (!category || !question || !answer || !value) {
+    //     props.nextQuestion();
+    // }
+
 
     return (
         <section className={styles.questions}>
