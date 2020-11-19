@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { changeScore } from '../actions/actions';
+import styles from '../styles/scoreboard.module.scss';
 
 const ScoreBoard = (props) => {
     const handleClick = (type, team) => {
@@ -11,15 +12,15 @@ const ScoreBoard = (props) => {
     }
 
     return (
-        <div>
+        <div class={styles.scores}>
             <h3>Score</h3>
             <ul>
                 {Object.keys(props.scores).map((key, index) => (
                     <li key={index}>
                         <h6>
-                            <span onClick={e => handleClick('-', key)}>-</span>
+                            <b className="indigo darken-4 white-text" onClick={e => handleClick('-', key)}>-</b>
                             {key}: {props.scores[key]}
-                            <span onClick={e => handleClick('+', key)}>+</span>
+                            <b className="indigo darken-4 white-text" onClick={e => handleClick('+', key)}>+</b>
                         </h6>
                     </li>
                 ))}
