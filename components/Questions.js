@@ -24,8 +24,8 @@ const Questions = props => {
                     <i><h4>{category}</h4></i>
                     <h4>{question}</h4>
                     {!viewAnswer ?
-                        <button className="col s2 offset-s2 btn indigo darken-4" onClick={e => toggleAnswer(true)}>Answer</button> :
-                        <div className="row">
+                        <button className="col s2 btn indigo darken-4" onClick={e => toggleAnswer(true)}>Answer</button> :
+                        <div className={styles.questions_answer + " row"}>
                             <h5 className="col s12 m10" style={{ padding: 0 }}>{answer}</h5>
                             {props.currentQuestion === props.questions.length - 1 ?
                                 <button className="col s3 m2 btn indigo darken-4" onClick={e => props.reset()}>Finish</button> :
