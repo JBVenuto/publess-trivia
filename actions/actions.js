@@ -24,6 +24,12 @@ export const getQuestions = (questions) => {
     }
 }
 
+export const toggleKeepScore = () => {
+    return {
+        type: 'TOGGLE_KEEP_SCORE'
+    }
+}
+
 export const reset = () => {
     return {
         type: 'RESET'

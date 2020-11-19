@@ -15,37 +15,44 @@ const Questions = props => {
     const category = removeTags(currentQuestion.category.title);
     const question = removeTags(currentQuestion.question);
     const answer = removeTags(currentQuestion.answer);
+    const questionClass = props.keepScore ? "col m9" : "col m12"
 
     return (
         <section className={styles.questions}>
-            <i><h4>{category}</h4></i>
-            <h4>{question}</h4>
-            {!viewAnswer ?
-                <button className="col s2 offset-s2 btn indigo darken-4" onClick={e => toggleAnswer(true)}>Answer</button> :
-                <div className="row">
-                    <h5 className="col s12 m10" style={{ padding: 0 }}>{answer}</h5>
-                    {props.currentQuestion === props.questions.length - 1 ?
-                        <button className="col s3 m2 btn indigo darken-4" onClick={e => props.reset()}>Finish</button> :
-                        <button className="col s3 m2 btn indigo darken-4" onClick={nextQ}>Next Question</button>
+            <div className="row">
+                <div className={questionClass}> 
+                    <i><h4>{category}</h4></i>
+                    <h4>{question}</h4>
+                    {!viewAnswer ?
+                        <button className="col s2 offset-s2 btn indigo darken-4" onClick={e => toggleAnswer(true)}>Answer</button> :
+                        <div className="row">
+                            <h5 className="col s12 m10" style={{ padding: 0 }}>{answer}</h5>
+                            {props.currentQuestion === props.questions.length - 1 ?
+                                <button className="col s3 m2 btn indigo darken-4" onClick={e => props.reset()}>Finish</button> :
+                                <button className="col s3 m2 btn indigo darken-4" onClick={nextQ}>Next Question</button>
+                            }
+                        </div>
                     }
                 </div>
-            }
-            <ScoreBoard />
+                {props.keepScore ? <div className="col m3"><ScoreBoard /></div> : null}
+            </div>
+
         </section>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        questions: state.questions,
+                questions: state.questions,
         currentQuestion: state.currentQuestion,
-        showQuestions: state.showQuestions
+        showQuestions: state.showQuestions,
+        keepScore: state.keepScore
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        nextQuestion: () => dispatch(nextQuestion()),
+                nextQuestion: () => dispatch(nextQuestion()),
         reset: () => dispatch(reset())
     }
 }

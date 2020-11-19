@@ -38,10 +38,10 @@ export const rootReducer = (state = initState, action) => {
                 ...initState
             }
 
-        case 'KEEP_SCORE':
+        case 'TOGGLE_KEEP_SCORE':
             return {
                 ...state,
-                keepScore: !this.keepScore
+                keepScore: !state.keepScore
             }
 
         case 'ADD_TEAM':
