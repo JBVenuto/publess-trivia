@@ -15,16 +15,22 @@ const Questions = props => {
     const category = removeTags(currentQuestion.category.title);
     const question = removeTags(currentQuestion.question);
     const answer = removeTags(currentQuestion.answer);
-    const questionClass = props.keepScore ? "col m9" : "col m12"
+    const questionClass = props.keepScore ? 
+        "col m9" : 
+        "col m12"
 
     return (
         <section className={styles.questions}>
             <div className="row">
-                <div className={questionClass}> 
+                <div className={questionClass}>
                     <i><h4>{category}</h4></i>
+                    {props.keepScore ?
+                        <i><h5>Points: {currentQuestion.value}</h5></i> :
+                        null
+                    }
                     <h4>{question}</h4>
                     {!viewAnswer ?
-                        <button className="col s2 btn indigo darken-4" onClick={e => toggleAnswer(true)}>Answer</button> :
+                        <button className="col s4 m2 btn indigo darken-4" onClick={e => toggleAnswer(true)}>Answer</button> :
                         <div className={styles.questions_answer + " row"}>
                             <h5 className="col s12 m10" style={{ padding: 0 }}>{answer}</h5>
                             {props.currentQuestion === props.questions.length - 1 ?
@@ -34,7 +40,10 @@ const Questions = props => {
                         </div>
                     }
                 </div>
-                {props.keepScore ? <div className="col m3"><ScoreBoard /></div> : null}
+                {props.keepScore ? 
+                    <div className="col s12 m3"><ScoreBoard /></div> : 
+                    null
+                }
             </div>
 
         </section>
@@ -43,7 +52,7 @@ const Questions = props => {
 
 const mapStateToProps = (state) => {
     return {
-                questions: state.questions,
+        questions: state.questions,
         currentQuestion: state.currentQuestion,
         showQuestions: state.showQuestions,
         keepScore: state.keepScore
@@ -52,7 +61,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-                nextQuestion: () => dispatch(nextQuestion()),
+        nextQuestion: () => dispatch(nextQuestion()),
         reset: () => dispatch(reset())
     }
 }
