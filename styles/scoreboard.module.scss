@@ -1,0 +1,30 @@
+.scores {
+    border-top: 1px solid #000;
+    padding: 0px 5px 10px 10px;
+    text-align: center;
+    box-sizing: border-box;
+
+    li {
+        margin: 20px 0;
+
+        h6 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            b {
+                display: inline-block;
+                box-sizing: border-box;
+                height: 20px;
+                width: 20px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    
+    @media only screen and (min-width: 601px) {
+        border-left: 1px solid #000;
+        border-top: none;
+    }    
+}
