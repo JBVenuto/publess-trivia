@@ -4,7 +4,8 @@ const initState = {
     currentQuestion: 0,
     showQuestions: false,
     keepScore: false,
-    scores: {}
+    scores: {},
+    finalScore: false
 }
 
 export const rootReducer = (state = initState, action) => {
@@ -60,6 +61,12 @@ export const rootReducer = (state = initState, action) => {
             return {
                 ...state,
                 scores: newScores
+            }
+
+        case 'SHOW_FINAL_SCORE':
+            return {
+                ...state,
+                finalScore: !state.finalScore
             }
 
         default:

@@ -5,10 +5,6 @@ import Questions from '../components/Questions';
 import { connect } from 'react-redux';
 
 const Home = props => {
-  const navStyle = {
-    margin: 0,
-    padding: ".5em 0"
-  }
 
   return (
     <div>
@@ -28,8 +24,7 @@ const Home = props => {
 
       <main className="container">
         {!props.showQuestions ?
-          <NumInput />
-          :
+          <NumInput /> :
           <Questions />
         }
       </main>

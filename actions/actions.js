@@ -50,3 +50,9 @@ export const changeScore = (team, points) => {
         points
     }
 }
+
+export const showFinalScore = () => {
+    return {
+        type: 'SHOW_FINAL_SCORE'
+    }
+}
