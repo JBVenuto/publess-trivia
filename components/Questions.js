@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import { nextQuestion, reset } from '../actions/actions';
+import { nextQuestion, reset, showFinalScore } from '../actions/actions';
 import styles from '../styles/questions.module.scss';
 import removeTags from '../lib/removeTags';
 import ScoreBoard from './ScoreBoard';
@@ -34,7 +34,7 @@ const Questions = props => {
                         <div className={styles.questions_answer + " row"}>
                             <h5 className="col s12 m10" style={{ padding: 0 }}>{answer}</h5>
                             {props.currentQuestion === props.questions.length - 1 ?
-                                <button className="col s3 m2 btn indigo darken-4" onClick={e => props.reset()}>Finish</button> :
+                                <button className="col s3 m2 btn indigo darken-4" onClick={e => props.showFinalScore()}>Finish</button> :
                                 <button className="col s3 m2 btn indigo darken-4" onClick={nextQ}>Next Question</button>
                             }
                         </div>
@@ -62,7 +62,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         nextQuestion: () => dispatch(nextQuestion()),
-        reset: () => dispatch(reset())
+        reset: () => dispatch(reset()),
+        showFinalScore: () => dispatch(showFinalScore())
     }
 }
 

@@ -1,10 +1,11 @@
 const initState = {
-    questions: [{category: {title: ''}, question: 'LOADING...', answer: ''}],
+    questions: [{ category: { title: '' }, question: 'LOADING...', answer: '' }],
     numQuestions: 0,
     currentQuestion: 0,
     showQuestions: false,
     keepScore: false,
-    scores: {}
+    scores: {},
+    finalScore: false
 }
 
 export const rootReducer = (state = initState, action) => {
@@ -35,7 +36,8 @@ export const rootReducer = (state = initState, action) => {
 
         case 'RESET':
             return {
-                ...initState
+                ...initState,
+                scores: {}
             }
 
         case 'TOGGLE_KEEP_SCORE':
@@ -60,6 +62,18 @@ export const rootReducer = (state = initState, action) => {
             return {
                 ...state,
                 scores: newScores
+            }
+
+        case 'SHOW_FINAL_SCORE':
+            return {
+                ...state,
+                finalScore: !state.finalScore
+            }
+        case 'NEXT_ROUND':
+            return {
+                ...initState,
+                scores: state.scores,
+                keepScore: true                
             }
 
         default:
