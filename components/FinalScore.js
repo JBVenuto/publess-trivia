@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { reset } from '../actions/actions';
+import { reset, nextRound } from '../actions/actions';
 import styles from '../styles/scoreboard.module.scss';
 
 const FinalScore = (props) => {
@@ -17,7 +17,7 @@ const FinalScore = (props) => {
                 ))}
             </ul>
             <button className="col s3 m2 btn indigo darken-4" onClick={e => props.reset()}>Finish</button>
-            <button className="col s3 m2 btn indigo darken-4" onClick={e => props.reset()}>Next Round</button>
+            <button className="col s3 m2 btn indigo darken-4" onClick={e => props.nextRound()}>Next  Round</button>
         </div>
     )
 }
@@ -30,7 +30,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        reset: () => dispatch(reset())
+        reset: () => dispatch(reset()),
+        nextRound: () => dispatch(nextRound())
     }
 }
 

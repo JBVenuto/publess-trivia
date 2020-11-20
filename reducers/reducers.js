@@ -1,5 +1,5 @@
 const initState = {
-    questions: [{category: {title: ''}, question: 'LOADING...', answer: ''}],
+    questions: [{ category: { title: '' }, question: 'LOADING...', answer: '' }],
     numQuestions: 0,
     currentQuestion: 0,
     showQuestions: false,
@@ -67,6 +67,10 @@ export const rootReducer = (state = initState, action) => {
             return {
                 ...state,
                 finalScore: !state.finalScore
+            }
+        case 'NEXT_ROUND':
+            return {
+                ...state,                
             }
 
         default:

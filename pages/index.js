@@ -2,6 +2,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
 import NumInput from '../components/NumInput';
 import Questions from '../components/Questions';
+import FinalScore from '../components/FinalScore';
 import { connect } from 'react-redux';
 
 const Home = props => {
@@ -22,12 +23,16 @@ const Home = props => {
         </div>
       </div>
 
-      <main className="container">
-        {!props.showQuestions ?
-          <NumInput /> :
-          <Questions />
-        }
-      </main>
+      {props.finalScore ?
+        <FinalScore /> :
+        <main className="container">
+          {!props.showQuestions ?
+            <NumInput /> :
+            <Questions />
+          }
+        </main>
+      }
+
     </div>
   )
 }
@@ -37,7 +42,8 @@ const mapStateToProps = (state) => {
     numQuestions: state.numQuestions,
     questions: state.questions,
     currentQuestion: state.currentQuestion,
-    showQuestions: state.showQuestions
+    showQuestions: state.showQuestions,
+    finalScore: state.finalScore
   }
 }
 

@@ -56,3 +56,9 @@ export const showFinalScore = () => {
         type: 'SHOW_FINAL_SCORE'
     }
 }
+
+export const nextRound = () => {
+    return {
+        type: 'NEXT_ROUND'
+    }
+}
