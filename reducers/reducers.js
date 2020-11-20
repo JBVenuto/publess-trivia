@@ -36,7 +36,8 @@ export const rootReducer = (state = initState, action) => {
 
         case 'RESET':
             return {
-                ...initState
+                ...initState,
+                scores: {}
             }
 
         case 'TOGGLE_KEEP_SCORE':
@@ -70,7 +71,9 @@ export const rootReducer = (state = initState, action) => {
             }
         case 'NEXT_ROUND':
             return {
-                ...state,                
+                ...initState,
+                scores: state.scores,
+                keepScore: true                
             }
 
         default:

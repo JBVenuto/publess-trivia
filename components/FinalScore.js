@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import { reset, nextRound } from '../actions/actions';
-import styles from '../styles/scoreboard.module.scss';
+import styles from '../styles/finalscore.module.scss';
 
 const FinalScore = (props) => {
 
     return (
-        <div class={styles.scores}>
+        <div class={styles.final_score}>
             <h3>Score</h3>
             <ul>
                 {Object.keys(props.scores).map((key, index) => (
