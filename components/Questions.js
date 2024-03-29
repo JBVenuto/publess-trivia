@@ -14,7 +14,7 @@ const Questions = props => {
     const currentQuestion = props.questions[props.currentQuestion];
     const category = removeTags(currentQuestion.category.title);
     const question = removeTags(currentQuestion.question);
-    const answer = removeTags(currentQuestion.answer);
+    const answer = removeTags(currentQuestion.correct_answer);
     const questionClass = props.keepScore ? 
         "col m9" : 
         "col m12"
