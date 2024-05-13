@@ -1,6 +1,6 @@
 const initState = {
     questions: [{ category: { title: '' }, question: 'LOADING...', answer: '' }],
-    numQuestions: 0,
+    numQuestions: 5,
     currentQuestion: 0,
     showQuestions: false,
     keepScore: false,
