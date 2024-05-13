@@ -2,18 +2,23 @@
   "name": "publess-trivia",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "v20.11.0",
+    "npm": "v10.1.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
+    "he": "^1.2.0",
     "materialize-css": "^1.0.0",
-    "next": "10.0.0",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "react-redux": "^7.2.2",
-    "redux": "^4.0.5",
-    "sass": "^1.29.0"
+    "next": "14.1.4",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-redux": "^9.1.0",
+    "redux": "^5.0.1",
+    "sass": "^1.72.0"
   }
 }

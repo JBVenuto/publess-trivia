@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
+import he from 'he';
 import { nextQuestion, reset, showFinalScore } from '../actions/actions';
 import styles from '../styles/questions.module.scss';
-import removeTags from '../lib/removeTags';
 import ScoreBoard from './ScoreBoard';
 
 const Questions = props => {
@@ -12,9 +12,9 @@ const Questions = props => {
         toggleAnswer(false);
     }
     const currentQuestion = props.questions[props.currentQuestion];
-    const category = removeTags(currentQuestion.category.title);
-    const question = removeTags(currentQuestion.question);
-    const answer = removeTags(currentQuestion.answer);
+    const category = he.decode(currentQuestion.category);
+    const question = he.decode(currentQuestion.question);
+    const answer = he.decode(currentQuestion.correct_answer);
     const questionClass = props.keepScore ? 
         "col m9" : 
         "col m12"
@@ -25,7 +25,7 @@ const Questions = props => {
                 <div className={questionClass}>
                     <i><h4>{category}</h4></i>
                     {props.keepScore ?
-                        <i><h5>Points: {currentQuestion.value}</h5></i> :
+                        <i><h5>Points: {currentQuestion.difficulty}</h5></i> :
                         null
                     }
                     <h4>{question}</h4>

@@ -5,7 +5,7 @@ import styles from '../styles/finalscore.module.scss';
 const FinalScore = (props) => {
 
     return (
-        <div class={styles.final_score}>
+        <div className={styles.final_score}>
             <h3>Score</h3>
             <ul>
                 {Object.keys(props.scores).map((key, index) => (

@@ -4,7 +4,7 @@ import styles from '../styles/scoreboard.module.scss';
 
 const ScoreBoard = (props) => {
     const handleClick = (type, team) => {
-        let points = props.questions[props.currentQuestion].value
+        let points = props.questions[props.currentQuestion].difficulty
         if (type === '-') {
             points = type + points;
         }
@@ -12,7 +12,7 @@ const ScoreBoard = (props) => {
     }
 
     return (
-        <div class={styles.scores}>
+        <div className={styles.scores}>
             <h3>Score</h3>
             <ul>
                 {Object.keys(props.scores).map((key, index) => (
